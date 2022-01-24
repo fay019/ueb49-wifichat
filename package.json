@@ -1,0 +1,24 @@
+{
+  "name": "ueb49-wifichat",
+  "version": "1.0.0",
+  "description": "chat app Descktop application and Mobile",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "chat",
+    "app",
+    "electron",
+    "desktop"
+  ],
+  "author": "wifi-wien 2022",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^16.0.7"
+  },
+  "dependencies": {
+    "dotenv": "^14.2.0"
+  }
+}
