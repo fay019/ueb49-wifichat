@@ -2,18 +2,18 @@ const { app, BrowserWindow, screen, Menu, shell, ipcMain } = require( 'electron'
 require('dotenv').config()
 
 // config
-const DEVMODE = true;
-let meinFenster;
+const DEVMODE = process.env.APP_DEVTOOLS;
 let myHeight = process.env.APP_HEIGHT;
-let  myWidth = process.env.APP_WIDTH;
-
-
+let myWidth = process.env.APP_WIDTH;
+let meinFenster;
 let myX, myY;
+
+
 /**
  * User Menu
  * @type {[{label: string, click: click},{label: string, click: click}]}
  */
-let meinMenu = [
+let userMenu = [
     {
         label:'Beenden', click:() => {
             app.quit();
@@ -28,7 +28,7 @@ let meinMenu = [
  * Dev Menu
  * @type {[{submenu: [{label: string, click: click},{role: string, label: string}], label: string},{label: string, click: click},{label: string, click: click}]}
  */
-let meinDevMenu = [
+let devMenu = [
         {
             label:'Beenden', click:() => {
                 app.quit();
@@ -57,21 +57,20 @@ const starteApplikation = () => {
         movable:true,
         //transparent: true,
         frame:true,
-        icon:__dirname + '/assets/csv-icon.png',
+        icon:__dirname + '/assets/chat.png',
         webPreferences:{
             nodeIntegration:true, //standard false
             contextIsolation:false,
             devTools:DEVMODE // false in published
         },
-        //icon: __dirname
     } );
     meinFenster.loadFile( 'view/index.html' );
     if ( DEVMODE ) {
         meinFenster.webContents.openDevTools(); // auto open devtools
-        Menu.setApplicationMenu( Menu.buildFromTemplate( meinDevMenu ) );
+        Menu.setApplicationMenu( Menu.buildFromTemplate( devMenu ) );
         meinFenster.setAlwaysOnTop( true );
     }else {
-        Menu.setApplicationMenu( Menu.buildFromTemplate( meinMenu ) );
+        Menu.setApplicationMenu( Menu.buildFromTemplate( userMenu ) );
     }
 };
 
