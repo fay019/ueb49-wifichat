@@ -15,32 +15,42 @@ let myX, myY;
  */
 let userMenu = [
     {
-        label:'Beenden', click:() => {
-            app.quit();
-            shell.beep();
-        }
-    },
-    {
-        label:'Refresh', role: 'reload'
-    },
+        label:'Chat', submenu:[
+                {
+                    label:'Beenden', click:() => {
+                        app.quit();
+                        shell.beep();
+                    },
+                },
+                {
+                    label:'Refresh', role: 'reload'
+
+                }
+            ]
+    }
 ];
 /**
  * Dev Menu
  * @type {[{submenu: [{label: string, click: click},{role: string, label: string}], label: string},{label: string, click: click},{label: string, click: click}]}
  */
 let devMenu = [
-        {
-            label:'Beenden', click:() => {
-                app.quit();
-                shell.beep();
-            }
-        },
-        {
-            label:'Dev-Tools', role:'toggleDevTools'
-        },
-        {
-            label:'Refresh', role: 'reload'
-        },
+    {
+        label: 'Dev', submenu: [
+            {
+                label:'Beenden', click:() => {
+                    app.quit();
+                    shell.beep();
+                }
+            },
+            {
+                label:'Dev-Tools', role:'toggleDevTools'
+            },
+            {
+                label:'Refresh', role: 'reload'
+            },
+
+        ]
+}
 ];
 //end config
 
